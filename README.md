@@ -1,41 +1,22 @@
-# AutoParts Pro ERP
+# مؤسسة AK ERP
 
-نظام إدارة قطع غيار السيارات (POS + مخزون + مبيعات) مع باك اند Express.
+نظام إدارة قطع غيار السيارات (POS + مخزون + مبيعات) مع PostgreSQL (Neon).
 
 ## التشغيل محلياً
 
-**المتطلبات:** Node.js 18+
+1. `npm install`
+2. انسخ `.env.example` إلى `.env` وضع `DATABASE_URL`
+3. `npm run db:ping` للتأكد من الاتصال
+4. `npm run dev` → http://localhost:3000
 
-1. تثبيت الحزم:
-   ```bash
-   npm install
-   ```
-2. انسخ الإعدادات وعدّل مفتاح Gemini إن أردت ميزة البحث بالذكاء الاصطناعي:
-   ```bash
-   copy .env.example .env
-   ```
-3. شغّل الفرونت والباك اند معاً (منفذ 3000):
-   ```bash
-   npm run dev
-   ```
+## حسابات تجريبية
 
-افتح: http://localhost:3000
+- `admin` / `123456`
+- `fahad` / `123456`
+- `sultan` / `123456`
 
-## الـ API
+## النشر
 
-| Method | Path | الوصف |
-|--------|------|--------|
-| GET | `/api/health` | فحص صحة السيرفر |
-| GET | `/api/bootstrap` | تحميل كل بيانات النظام |
-| PUT | `/api/state` | حفظ حالة النظام |
-| POST | `/api/checkout` | إتمام بيع POS |
-| POST | `/api/purchase-orders/:id/receive` | استلام أمر شراء |
-| POST | `/api/ai/part-lookup` | بحث قطعة عبر Gemini (سيرفر) |
-
-البيانات تُحفظ في `server/data/store.json`.
-
-## أوامر أخرى
-
-- `npm run build` — بناء الفرونت
-- `npm start` — تشغيل إنتاجي (بعد البناء)
-- `npm run lint` — فحص TypeScript
+- Frontend: Vite → Vercel
+- API: `/api` serverless
+- Database: Neon PostgreSQL (`DATABASE_URL`)
